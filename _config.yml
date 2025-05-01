@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://avatars.githubusercontent.com/u/18130716?v=4
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -147,10 +147,26 @@ pwa:
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
-paginate: 10
+paginate: 1000
 
 # The base URL of your site
 baseurl: ""
+
+jekyll_compose:
+  default_front_matter:
+    drafts:
+      description:
+      image:
+      category:
+      tags:
+    posts:
+      description:
+      image:
+      category:
+      tags:
+      published: false
+      sitemap: false
+
 
 # ------------ The following options are not recommended to be modified ------------------
 
