@@ -5,6 +5,8 @@ Personal link page. One static `index.html`, no build step.
 - **Edit** `index.html` and push to `main`. GitHub Pages serves the files as they are
   (`.nojekyll` switches off Pages' built-in Jekyll processing).
 - **Preview locally:** `python3 -m http.server 8000`, then open <http://localhost:8000>.
+- **Avatar:** `avatar.jpg` is 320×320, resized from the original with
+  `magick original.jpeg -resize 320x320 -quality 85 -strip avatar.jpg`.
 - **Favicon:** `favicon.svg` is the source. The raster fallbacks are rendered from it with
   [ImageMagick](https://imagemagick.org/):
 
