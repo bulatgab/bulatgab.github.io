@@ -150,21 +150,20 @@
       background: var(--hover);
       transform: translateY(-1px);
     }
-    /* Full-bleed on phones; a smaller centred tile on wider screens. */
+    /* Full width on phones; a narrower centred column on wider screens
+       (the heading and the cards share it, so they stay aligned). */
+    @media (min-width: 600px) {
+      section {
+        max-width: 340px;
+        margin: 0 auto;
+      }
+    }
     .card .thumb {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 13px 13px 0 0; /* outer radius minus the 1px border */
       border-bottom: 1px solid var(--border);
-    }
-    @media (min-width: 600px) {
-      .card .thumb {
-        width: 70%;
-        margin: 18px auto 0;
-        border-radius: 10px;
-        border-bottom: 0;
-      }
     }
     .card .body {
       padding: 14px 18px 16px;
@@ -294,7 +293,7 @@
           <img class="thumb"
                src="img/lifeinweeks-480.webp"
                srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
-               sizes="(min-width: 600px) 335px, calc(100vw - 34px)"
+               sizes="(min-width: 600px) 338px, calc(100vw - 34px)"
                width="960" height="960" loading="lazy"
                alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
           <div class="body">
