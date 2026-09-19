@@ -84,6 +84,7 @@
     .tagline {
       margin: 0 0 22px;
       color: var(--muted);
+      text-wrap: balance;
     }
 
     .socials {
@@ -149,12 +150,21 @@
       background: var(--hover);
       transform: translateY(-1px);
     }
+    /* Full-bleed on phones; a smaller centred tile on wider screens. */
     .card .thumb {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 13px 13px 0 0; /* outer radius minus the 1px border */
       border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 600px) {
+      .card .thumb {
+        width: 70%;
+        margin: 18px auto 0;
+        border-radius: 10px;
+        border-bottom: 0;
+      }
     }
     .card .body {
       padding: 14px 18px 16px;
@@ -273,7 +283,7 @@
     </header>
 
     <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
+      <h2 id="projects-heading">Side projects</h2>
       <!--
         To add a project, copy one <li class="card"> block below.
         The <h3> link is the primary (whole-card) link; the <img class="thumb">
@@ -284,7 +294,7 @@
           <img class="thumb"
                src="img/lifeinweeks-480.webp"
                srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
-               sizes="(min-width: 512px) 478px, calc(100vw - 34px)"
+               sizes="(min-width: 600px) 335px, calc(100vw - 34px)"
                width="960" height="960" loading="lazy"
                alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
           <div class="body">
