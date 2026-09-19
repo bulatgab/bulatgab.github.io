@@ -14,3 +14,9 @@ Personal link page. One static `index.html`, no build step.
   magick -background none -density 600 favicon.svg -define icon:auto-resize=48,32,16 -depth 8 favicon.ico
   sed 's/rx="14"/rx="0"/' favicon.svg | magick -background '#3b5bdb' -density 600 svg:- -resize 180x180 -alpha off -depth 8 -strip apple-touch-icon.png
   ```
+- **Project thumbnails** live in `img/` as square WebP at 480 and 960 px (`srcset`).
+  The Life in Weeks tile is a headless-Chrome shot of the app at an 800×880 window
+  (that height makes the grid come out square), with `#fab, #share-fab, #stats, #legend`
+  hidden via an injected `<style>`, cropped to 1600×1600 from 24 px down, then
+  `magick tile.png -resize 960x960 -define webp:method=6 -quality 42 img/lifeinweeks-960.webp`
+  (480 px at quality 50). The URL with the sample life is in the lifeinweeks README.
