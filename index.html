@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bulat Gabidullin</title>
-  <meta name="description" content="Bulat Gabidullin — frontend developer (Vue, TypeScript), ex-scientist. GitHub, LinkedIn, projects and email.">
+  <meta name="description" content="Bulat Gabidullin — frontend developer: Vue.js, TypeScript, React Native. GitHub, LinkedIn, projects and email.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f6f4">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121214">
@@ -17,7 +17,7 @@
 
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Bulat Gabidullin">
-  <meta property="og:description" content="Frontend developer. Ex-scientist (X-ray crystallography).">
+  <meta property="og:description" content="Frontend developer – Vue.js, TypeScript, React Native">
   <meta property="og:url" content="https://bulatgab.github.io/">
   <meta property="og:image" content="https://bulatgab.github.io/avatar.jpg">
   <meta property="og:image:width" content="320">
@@ -139,7 +139,6 @@
     }
     .card {
       position: relative;
-      padding: 16px 18px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -149,6 +148,16 @@
       border-color: var(--accent);
       background: var(--hover);
       transform: translateY(-1px);
+    }
+    .card .thumb {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 13px 13px 0 0; /* outer radius minus the 1px border */
+      border-bottom: 1px solid var(--border);
+    }
+    .card .body {
+      padding: 14px 18px 16px;
     }
     .card h3 {
       margin: 0 0 4px;
@@ -235,7 +244,7 @@
     <header>
       <img class="avatar" src="avatar.jpg" width="112" height="112" alt="">
       <h1>Bulat Gabidullin</h1>
-      <p class="tagline">Frontend developer. Ex-scientist (X-ray crystallography).</p>
+      <p class="tagline">Frontend developer – Vue.js, TypeScript, React Native</p>
 
       <ul class="socials">
         <li>
@@ -267,17 +276,26 @@
       <h2 id="projects-heading">Projects</h2>
       <!--
         To add a project, copy one <li class="card"> block below.
-        The <h3> link is the primary (whole-card) link; "Source" is optional.
+        The <h3> link is the primary (whole-card) link; the <img class="thumb">
+        and the "Source" link are both optional.
       -->
       <ul class="cards">
         <li class="card">
-          <h3>
-            <a href="https://bulatgab.github.io/lifeinweeks/">Life in Weeks<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-          </h3>
-          <p>Your life as a grid of weeks — one dot per week, past dimmed, future bright. No server and no storage: every setting lives in the URL.</p>
-          <div class="meta">
-            <ul class="tags"><li>Vanilla JS</li><li>CSS</li><li>No backend</li></ul>
-            <a class="source" href="https://github.com/bulatgab/lifeinweeks">Source</a>
+          <img class="thumb"
+               src="img/lifeinweeks-480.webp"
+               srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
+               sizes="(min-width: 512px) 478px, calc(100vw - 34px)"
+               width="960" height="460" loading="lazy"
+               alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
+          <div class="body">
+            <h3>
+              <a href="https://bulatgab.github.io/lifeinweeks/">Life in Weeks<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </h3>
+            <p>Your life as a grid of weeks — one dot per week, past dimmed, future bright. No server and no storage: every setting lives in the URL.</p>
+            <div class="meta">
+              <ul class="tags"><li>Vanilla JS</li><li>CSS</li><li>No backend</li></ul>
+              <a class="source" href="https://github.com/bulatgab/lifeinweeks">Source</a>
+            </div>
           </div>
         </li>
       </ul>
