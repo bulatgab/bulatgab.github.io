@@ -313,7 +313,8 @@
         For a picture whose edges should line up with the text (a chart, not a
         full-bleed photo), crop it tight and add class="thumb inset" with
         style="--inset-bg: <its background colour>"; its `sizes` then shrinks
-        by the 36px of padding.
+        by the 36px of padding. When you replace an image under the same file
+        name, bump its ?v= so browsers don't keep showing the cached old one.
       -->
       <ul class="cards">
         <li class="card">
@@ -339,8 +340,8 @@
         <li class="card">
           <a class="thumb-link" href="https://bulatgab.github.io/lifeinweeks/" tabindex="-1" aria-hidden="true">
             <img class="thumb inset" style="--inset-bg: #1a0b2e"
-                 src="img/lifeinweeks-480.webp"
-                 srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
+                 src="img/lifeinweeks-480.webp?v=2"
+                 srcset="img/lifeinweeks-480.webp?v=2 480w, img/lifeinweeks-960.webp?v=2 960w"
                  sizes="(min-width: 600px) 302px, calc(100vw - 70px)"
                  width="960" height="960" loading="lazy"
                  alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
