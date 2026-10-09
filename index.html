@@ -141,6 +141,7 @@
     /* Cards in a row stretch to equal height; the card and its body are
        flex columns so the tag row sits at the bottom of each. */
     .card {
+      --card-pad: 18px; /* side padding of the text; an inset thumbnail matches it */
       display: flex;
       flex-direction: column;
       background: var(--card);
@@ -170,11 +171,17 @@
       transition: filter .15s;
     }
     .card .thumb-link:hover .thumb { filter: brightness(1.15); }
+    /* An inset thumbnail sits in a frame of its own background colour, as wide
+       as the text padding, so the picture's edges line up with the text. */
+    .card .thumb.inset {
+      padding: var(--card-pad);
+      background: var(--inset-bg);
+    }
     .card .body {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 14px 18px 16px;
+      padding: 14px var(--card-pad) 16px;
     }
     .card h3 {
       margin: 0 0 4px;
@@ -303,6 +310,10 @@
         selectable; the thumbnail, the subtitle and the "Source" link are optional.
         The thumbnail link duplicates the title link, so it is hidden from the
         keyboard and screen readers (tabindex="-1" aria-hidden="true").
+        For a picture whose edges should line up with the text (a chart, not a
+        full-bleed photo), crop it tight and add class="thumb inset" with
+        style="--inset-bg: <its background colour>"; its `sizes` then shrinks
+        by the 36px of padding.
       -->
       <ul class="cards">
         <li class="card">
@@ -327,10 +338,10 @@
         </li>
         <li class="card">
           <a class="thumb-link" href="https://bulatgab.github.io/lifeinweeks/" tabindex="-1" aria-hidden="true">
-            <img class="thumb"
+            <img class="thumb inset" style="--inset-bg: #1a0b2e"
                  src="img/lifeinweeks-480.webp"
                  srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
-                 sizes="(min-width: 600px) 338px, calc(100vw - 34px)"
+                 sizes="(min-width: 600px) 302px, calc(100vw - 70px)"
                  width="960" height="960" loading="lazy"
                  alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
           </a>
