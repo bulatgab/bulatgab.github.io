@@ -139,16 +139,9 @@
       gap: 12px;
     }
     .card {
-      position: relative;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      transition: border-color .15s, background .15s, transform .15s;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      background: var(--hover);
-      transform: translateY(-1px);
     }
     /* Full width on phones; a narrower centred column on wider screens
        (the heading and the cards share it, so they stay aligned). */
@@ -158,13 +151,16 @@
         margin: 0 auto;
       }
     }
+    .card .thumb-link { display: block; }
     .card .thumb {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 13px 13px 0 0; /* outer radius minus the 1px border */
       border-bottom: 1px solid var(--border);
+      transition: filter .15s;
     }
+    .card .thumb-link:hover .thumb { filter: brightness(1.15); }
     .card .body {
       padding: 14px 18px 16px;
     }
@@ -173,20 +169,14 @@
       font-size: 1rem;
       font-weight: 600;
     }
-    /* The title link is stretched over the whole card via ::after,
-       so the entire card is clickable without nesting anchors. */
+    /* Only the thumbnail and the title are links; the text stays selectable. */
     .card h3 a {
       color: inherit;
-      text-decoration: none;
+      text-underline-offset: 3px;
+      border-radius: 4px;
     }
-    .card h3 a::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-    }
-    .card h3 a:focus-visible { outline: none; }
-    .card h3 a:focus-visible::after {
+    .card h3 a:hover { color: var(--accent); }
+    .card h3 a:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
@@ -196,17 +186,30 @@
       margin-left: 4px;
       vertical-align: -1px;
       color: var(--muted);
+      transition: color .15s;
       fill: none;
       stroke: currentColor;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+    .card h3 a:hover svg { color: inherit; }
     .card p {
       margin: 0;
       font-size: 0.9rem;
       color: var(--muted);
     }
+    .card p + p { margin-top: 6px; }
+    .card .subtitle {
+      margin-bottom: 10px;
+      color: var(--fg);
+      text-wrap: balance;
+    }
+    .card p a {
+      color: inherit;
+      text-underline-offset: 2px;
+    }
+    .card p a:hover { color: var(--accent); }
     .card .meta {
       display: flex;
       align-items: center;
@@ -226,10 +229,7 @@
       background: var(--bg);
       color: var(--muted);
     }
-    /* Secondary links sit above the stretched title link. */
     .card .source {
-      position: relative;
-      z-index: 1;
       margin-left: auto;
       color: var(--muted);
       text-decoration: none;
@@ -243,8 +243,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .socials a, .card { transition: none; }
-      .socials a:hover, .card:hover { transform: none; }
+      .socials a { transition: none; }
+      .socials a:hover { transform: none; }
     }
   </style>
 </head>
@@ -285,22 +285,28 @@
       <h2 id="projects-heading">Side projects</h2>
       <!--
         To add a project, copy one <li class="card"> block below.
-        The <h3> link is the primary (whole-card) link; the <img class="thumb">
-        and the "Source" link are both optional.
+        Only the thumbnail and the <h3> title are links, so the text stays
+        selectable; the thumbnail, the subtitle and the "Source" link are optional.
       -->
       <ul class="cards">
         <li class="card">
-          <img class="thumb"
-               src="img/lifeinweeks-480.webp"
-               srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
-               sizes="(min-width: 600px) 338px, calc(100vw - 34px)"
-               width="960" height="960" loading="lazy"
-               alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
+          <!-- Duplicate of the title link, so it is hidden from keyboard and screen readers. -->
+          <a class="thumb-link" href="https://bulatgab.github.io/lifeinweeks/" tabindex="-1" aria-hidden="true">
+            <img class="thumb"
+                 src="img/lifeinweeks-480.webp"
+                 srcset="img/lifeinweeks-480.webp 480w, img/lifeinweeks-960.webp 960w"
+                 sizes="(min-width: 600px) 338px, calc(100vw - 34px)"
+                 width="960" height="960" loading="lazy"
+                 alt="A grid of coloured dots, one per week of a life: past weeks in period colours, future weeks in pink, a marker on today">
+          </a>
           <div class="body">
             <h3>
               <a href="https://bulatgab.github.io/lifeinweeks/">Life in Weeks<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             </h3>
-            <p>Your life as a grid of weeks — one dot per week, past dimmed, future bright. No server and no storage: every setting lives in the URL.</p>
+            <p class="subtitle">Your whole life, one dot per week</p>
+            <p>Vibe-coded, mostly in one evening.</p>
+            <p>Inspired by a <a href="https://waitbutwhy.com/2014/05/life-weeks.html">Wait But Why essay</a> and a <a href="https://www.youtube.com/watch?v=JXeJANDKwDc">Kurzgesagt video</a>.</p>
+            <p>Your data is never saved anywhere. It lives in the URL — bookmark or copy it (repeat after each change).</p>
             <div class="meta">
               <ul class="tags"><li>Vanilla JS</li><li>CSS</li><li>No backend</li></ul>
               <a class="source" href="https://github.com/bulatgab/lifeinweeks">Source</a>
