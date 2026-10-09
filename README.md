@@ -20,3 +20,9 @@ Personal link page. One static `index.html`, no build step.
   hidden via an injected `<style>`, cropped to 1600×1600 from 24 px down, then
   `magick tile.png -resize 960x960 -define webp:method=6 -quality 42 img/lifeinweeks-960.webp`
   (480 px at quality 50). The URL with the sample life is in the lifeinweeks README.
+  The Art Decoded tile is the live app (https://art-decoded.pages.dev/) at an 800×880
+  window, 2× device scale, after clicking the blue-cloak couple in *Netherlandish
+  Proverbs* (CSS point 330, 690). Flutter paints the painting only after its tiles
+  load, which plain `--screenshot` does not wait for, so it was captured over the
+  Chrome DevTools protocol after a 15 s real-time wait. Cropped
+  `-crop 1460x1460+20+95` (drops the floating buttons), then the same `magick` commands.

@@ -138,18 +138,27 @@
       display: grid;
       gap: 12px;
     }
+    /* Cards in a row stretch to equal height; the card and its body are
+       flex columns so the tag row sits at the bottom of each. */
     .card {
+      display: flex;
+      flex-direction: column;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
     }
-    /* Full width on phones; a narrower centred column on wider screens
-       (the heading and the cards share it, so they stay aligned). */
+    /* Full width on phones; one 340px column from 600px; two cards side by
+       side from 724px (2 × 340 + 12px gap + 2 × 16px page padding).
+       The heading and the cards share the column, so they stay aligned. */
     @media (min-width: 600px) {
       section {
         max-width: 340px;
         margin: 0 auto;
       }
+    }
+    @media (min-width: 724px) {
+      main, section { max-width: 692px; }
+      .cards { grid-template-columns: 1fr 1fr; }
     }
     .card .thumb-link { display: block; }
     .card .thumb {
@@ -162,6 +171,9 @@
     }
     .card .thumb-link:hover .thumb { filter: brightness(1.15); }
     .card .body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       padding: 14px 18px 16px;
     }
     .card h3 {
@@ -199,9 +211,10 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
+    /* Top margins only: flex items' margins don't collapse. */
     .card p + p { margin-top: 6px; }
+    .card .subtitle + p { margin-top: 10px; }
     .card .subtitle {
-      margin-bottom: 10px;
       color: var(--fg);
       text-wrap: balance;
     }
@@ -215,7 +228,8 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 6px 8px;
-      margin-top: 12px;
+      margin-top: auto;
+      padding-top: 12px;
       font-size: 0.75rem;
     }
     .card .tags {
@@ -287,10 +301,31 @@
         To add a project, copy one <li class="card"> block below.
         Only the thumbnail and the <h3> title are links, so the text stays
         selectable; the thumbnail, the subtitle and the "Source" link are optional.
+        The thumbnail link duplicates the title link, so it is hidden from the
+        keyboard and screen readers (tabindex="-1" aria-hidden="true").
       -->
       <ul class="cards">
         <li class="card">
-          <!-- Duplicate of the title link, so it is hidden from keyboard and screen readers. -->
+          <a class="thumb-link" href="https://art-decoded.pages.dev/" tabindex="-1" aria-hidden="true">
+            <img class="thumb"
+                 src="img/artdecoded-480.webp"
+                 srcset="img/artdecoded-480.webp 480w, img/artdecoded-960.webp 960w"
+                 sizes="(min-width: 600px) 338px, calc(100vw - 34px)"
+                 width="960" height="960" loading="lazy"
+                 alt="Detail of Bruegel's Netherlandish Proverbs in the app: a woman in red draping a blue cloak over a man, lit up against the dimmed painting, captioned “She puts the blue cloak on her husband”">
+          </a>
+          <div class="body">
+            <h3>
+              <a href="https://art-decoded.pages.dev/">Art Decoded<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </h3>
+            <p class="subtitle">Famous paintings in deep zoom, explained scene by scene</p>
+            <p>Tap a figure to highlight it and read what it means.</p>
+            <div class="meta">
+              <ul class="tags"><li>Flutter</li><li>Dart</li><li>Supabase</li></ul>
+            </div>
+          </div>
+        </li>
+        <li class="card">
           <a class="thumb-link" href="https://bulatgab.github.io/lifeinweeks/" tabindex="-1" aria-hidden="true">
             <img class="thumb"
                  src="img/lifeinweeks-480.webp"
