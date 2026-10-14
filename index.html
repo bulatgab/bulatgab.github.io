@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bulat Gabidullin</title>
-  <meta name="description" content="Bulat Gabidullin — frontend developer: Vue.js, TypeScript, React Native. GitHub, LinkedIn, projects and email.">
+  <meta name="description" content="Bulat Gabidullin — frontend developer: Vue.js, TypeScript, React Native. GitHub, LinkedIn, projects, writing and email.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f6f4">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121214">
@@ -130,6 +130,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
+      scroll-margin-top: 24px; /* room above it when opened as #projects or #writing */
     }
     .cards {
       list-style: none;
@@ -199,7 +200,8 @@
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
-    .card h3 svg {
+    .card h3 svg,
+    .writing svg {
       width: 14px;
       height: 14px;
       margin-left: 4px;
@@ -212,7 +214,8 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-    .card h3 a:hover svg { color: inherit; }
+    .card h3 a:hover svg,
+    .writing a:hover svg { color: inherit; }
     .card p {
       margin: 0;
       font-size: 0.9rem;
@@ -263,6 +266,31 @@
       outline: none;
     }
 
+    /* ---- Writing: the title is the link; below it, where and when ---- */
+    section + section { margin-top: 44px; }
+    .writing {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .writing li { text-wrap: balance; }
+    .writing li + li { margin-top: 14px; }
+    .writing a {
+      color: inherit;
+      text-underline-offset: 3px;
+      border-radius: 4px;
+    }
+    .writing a:hover { color: var(--accent); }
+    .writing a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .writing p {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .socials a { transition: none; }
       .socials a:hover { transform: none; }
@@ -302,8 +330,8 @@
       </ul>
     </header>
 
-    <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Side projects</h2>
+    <section aria-labelledby="projects">
+      <h2 id="projects">Side projects</h2>
       <!--
         To add a project, copy one <li class="card"> block below.
         Only the thumbnail and the <h3> title are links, so the text stays
@@ -359,6 +387,20 @@
               <a class="source" href="https://github.com/bulatgab/lifeinweeks">Source</a>
             </div>
           </div>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <!--
+        To add an article or post, copy one <li> block. Newest first.
+        Only the title is a link; the line below it says where and when.
+      -->
+      <ul class="writing">
+        <li>
+          <a href="https://medium.com/@bulatgab/how-to-marry-firebase-database-and-react-in-typescript-74a4eeb5085a">How to marry Firebase Database and React (in TypeScript)<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <p>Medium · <time datetime="2020-12-31">Dec 2020</time></p>
         </li>
       </ul>
     </section>
