@@ -25,7 +25,7 @@ Personal link page. One static `index.html`, no build step.
   with the card's text padding in its background colour (`--inset-bg: #1a0b2e`), so
   the dots line up with the text at every width. The URL with the sample life is in
   the lifeinweeks README (the chart goes after `#` there).
-  The Art Decoded tile is the live app (https://art-decoded.pages.dev/) at an 800×880
+  The Art Decoded tile is the live app (https://artdecoded.app/) at an 800×880
   window, 2× device scale, after clicking the blue-cloak couple in *Netherlandish
   Proverbs* (CSS point 330, 690). Flutter paints the painting only after its tiles
   load, which plain `--screenshot` does not wait for, so it was captured over the
